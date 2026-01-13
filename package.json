@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "prisma generate && prisma migrate deploy && next build",
-    "start": "next start",
+    "dev": "node init && next dev",
+    "build": "node init && prisma generate && (prisma migrate deploy || true) && next build",
+    "build:safe": "node init && prisma generate && prisma migrate deploy && next build",
+    "postinstall": "prisma generate",
+    "start": "node init && next start",
     "lint": "eslint"
   },
   "dependencies": {
